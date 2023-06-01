@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CollisionsPlayer : MonoBehaviour
 {
     public int score = 0;
+    public TextMeshProUGUI txtScore;
+
+    void Start()
+    {
+        txtScore.text = "0";
+    }
     
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -13,9 +20,11 @@ public class CollisionsPlayer : MonoBehaviour
             Destroy(col.gameObject);
             //score = score + 1;
             score++;
-            if (score == 5)
+            txtScore.text = score.ToString();
+                
+            if(score == 2)
             {
-                Debug.Log("You Win!");
+                txtScore.text = "You Win!!!";
             }
         }
     }
